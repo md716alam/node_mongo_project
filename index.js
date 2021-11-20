@@ -42,7 +42,7 @@ app.get("/transactiondetails",(req,res) =>{
            {$sort: {sortId: 1}}
          ];
         // transaction is collection which store trnsaction details
-        dbo.collection("transaction").aggregate(pipeline).toArray(function(err, result) {
+        dbo.collection("transaction").aggregate(pipeline).limit(100).toArray(function(err, result) {
             if (err) throw err;
             //console.log(result);
             res.send(result)
